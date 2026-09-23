@@ -1,16 +1,92 @@
 ---
-title: "Blog"
+title: "Module One Assignment"
 format: html
 editor_options: 
   chunk_output_type: console
 ---
 
-# GEtting statrted
+## Goals:
 
+Generate sample populations and find allele and genotype frequencies. Interpret results.
 
-# 
+## Population A
 
 ```{r}
-1 + 1
+set.seed(123)
+n_indv = 30
+n_loci = 10
+geno = matrix(sample(0:2, n_indv * n_loci, replace = TRUE, prob = c(0.4, 0.4,0.2)), nrow = n_indv, ncol = n_loci)
+rownames(geno) = paste0("ind", 1:n_indv)
+colnames(geno) = paste0("locus", 1:n_loci)
+geno[1:30, 1:10]
+alt_freq = colMeans(geno) / 2
+ref_freq = 1 - alt_freq
+data.frame(locus = names(alt_freq), alt_freq = round(alt_freq, 3), ref_freq = round(ref_freq, 3))
 ```
 
+```{r}
+set.seed(42)
+p_1 = 0.80
+q_1 = 1 - p_1
+Pop_1 = data.frame(population = "Pop_1", genotype = sample(c("AA", "Aa", "aa"), size = 30, replace = TRUE, prob = c(p_1^2, 2 * p_1 * q_1, q_1^2)))
+```
+
+## Population B
+
+```{r}
+set.seed(123)
+n_indvB = 30
+n_loci = 10
+geno = matrix(sample(0:2, n_indvB  * n_loci, replace = TRUE, prob = c(0.4, 0.4,0.2)), nrow = n_indvB, ncol = n_loci)
+rownames(geno) = paste0("ind", 1:n_indvB)
+colnames(geno) = paste0("locus", 1:n_loci)
+geno[1:30, 1:10]
+head(geno)
+alt_freq = colMeans(geno) / 2
+ref_freq = 1 - alt_freq
+data.frame(locus = names(alt_freq), alt_freq = round(alt_freq, 3), ref_freq = round(ref_freq, 3))
+```
+
+```{r}
+set.seed(42)
+p_1 = 0.60
+q_1 = 1 - p_1
+Pop_2 = data.frame(population = "Pop_2", genotype = sample(c("AA", "Aa", "aa"), size = 30, replace = TRUE, prob = c(p_1^2, 2 * p_1 * q_1, q_1^2)))
+
+```
+
+Genotype Frequencies
+
+```{r}
+#Calculating geno freq's
+geno_count_pop1 = table(Pop_1$genotype)
+geno_count_pop2 = table(Pop_2$genotype)
+head(geno_count_pop1)
+head(geno_count_pop2)
+```
+
+```{r}
+#Converting geno counts to frequencies
+geno_prop_Pop1 = prop.table(table(Pop_1$genotype))
+geno_prop_Pop2 = prop.table(table(Pop_2$genotype))
+head(geno_prop_Pop1)
+head(geno_prop_Pop2)
+```
+
+(need to bind populations)
+
+## ........
+
+```{r}
+Ho = colMeans(geno == 1)
+He = 2 * ref_freq * alt_freq
+
+het_table <- data.frame (locus = names (Ho), Ho = round(Ho, 3), He = round (He, 3), diff = round(Ho - He, 3))
+het_table
+
+```
+
+```{r}
+pca_sim <-prcomp(geno, scale. = TRUE)
+plot(pca_sim$x[, 1], pca_sim$x[, 2], pch = 19, xlab = "PC1", ylab = "PC2", main = "Simulated genotype PCA")
+```

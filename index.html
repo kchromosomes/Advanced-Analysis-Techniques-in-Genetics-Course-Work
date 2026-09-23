@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Blog</title>
+<title>Module One Assignment</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -84,7 +84,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Blog</h1>
+<h1 class="title">Module One Assignment</h1>
 </div>
 
 
@@ -101,15 +101,221 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="getting-statrted" class="level1">
-<h1>GEtting statrted</h1>
+<section id="goals" class="level2">
+<h2 class="anchored" data-anchor-id="goals">Goals:</h2>
+<p>Generate sample populations and find allele and genotype frequencies. Interpret results.</p>
 </section>
-<section id="section" class="level1">
-<h1></h1>
+<section id="population-a" class="level2">
+<h2 class="anchored" data-anchor-id="population-a">Population A</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>n_indv <span class="ot">=</span> <span class="dv">30</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>n_loci <span class="ot">=</span> <span class="dv">10</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>geno <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">2</span>, n_indv <span class="sc">*</span> n_loci, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.4</span>, <span class="fl">0.4</span>,<span class="fl">0.2</span>)), <span class="at">nrow =</span> n_indv, <span class="at">ncol =</span> n_loci)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(geno) <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">"ind"</span>, <span class="dv">1</span><span class="sc">:</span>n_indv)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(geno) <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">"locus"</span>, <span class="dv">1</span><span class="sc">:</span>n_loci)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>geno[<span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<pre><code>      locus1 locus2 locus3 locus4 locus5 locus6 locus7 locus8 locus9 locus10
+ind1       1      2      0      1      0      2      2      0      0       2
+ind2       0      2      1      0      1      0      1      1      0       1
+ind3       0      0      1      1      1      1      0      1      1       1
+ind4       2      0      1      0      1      1      1      0      0       1
+ind5       2      1      2      1      1      1      0      1      1       0
+ind6       1      0      0      1      2      1      0      0      0       0
+ind7       0      0      2      0      1      0      1      1      1       2
+ind8       2      1      2      1      1      1      0      0      2       0
+ind9       0      1      0      0      1      0      2      2      2       1
+ind10      0      1      0      0      0      1      2      2      0       0
+ind11      2      1      0      0      0      0      1      1      1       0
+ind12      0      0      0      1      2      1      1      2      1       1
+ind13      0      0      0      0      0      0      2      0      0       1
+ind14      0      1      1      2      0      1      0      0      1       1
+ind15      1      1      0      0      0      1      2      1      0       1
+ind16      2      1      1      2      0      0      0      1      0       1
+ind17      1      1      1      2      2      0      0      0      1       1
+ind18      1      0      0      0      0      1      0      0      0       1
+ind19      1      1      1      0      2      0      1      0      0       1
+ind20      2      2      1      1      0      1      0      2      2       0
+ind21      2      1      1      2      1      0      1      0      2       1
+ind22      0      0      0      1      0      1      2      0      2       1
+ind23      0      0      0      1      1      2      0      0      0       1
+ind24      2      1      0      2      1      0      0      1      2       2
+ind25      0      0      1      0      2      0      0      1      0       0
+ind26      0      1      0      1      1      0      2      1      0       2
+ind27      0      1      2      0      1      1      1      1      1       2
+ind28      0      0      2      2      1      0      1      2      1       1
+ind29      1      2      2      0      1      2      1      1      1       1
+ind30      1      1      1      0      0      0      1      2      0       0</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>alt_freq <span class="ot">=</span> <span class="fu">colMeans</span>(geno) <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>ref_freq <span class="ot">=</span> <span class="dv">1</span> <span class="sc">-</span> alt_freq</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">locus =</span> <span class="fu">names</span>(alt_freq), <span class="at">alt_freq =</span> <span class="fu">round</span>(alt_freq, <span class="dv">3</span>), <span class="at">ref_freq =</span> <span class="fu">round</span>(ref_freq, <span class="dv">3</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          locus alt_freq ref_freq
+locus1   locus1    0.400    0.600
+locus2   locus2    0.383    0.617
+locus3   locus3    0.383    0.617
+locus4   locus4    0.367    0.633
+locus5   locus5    0.400    0.600
+locus6   locus6    0.317    0.683
+locus7   locus7    0.417    0.583
+locus8   locus8    0.400    0.600
+locus9   locus9    0.367    0.633
+locus10 locus10    0.450    0.550</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>p_1 <span class="ot">=</span> <span class="fl">0.80</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>q_1 <span class="ot">=</span> <span class="dv">1</span> <span class="sc">-</span> p_1</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>Pop_1 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">population =</span> <span class="st">"Pop_1"</span>, <span class="at">genotype =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"AA"</span>, <span class="st">"Aa"</span>, <span class="st">"aa"</span>), <span class="at">size =</span> <span class="dv">30</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(p_1<span class="sc">^</span><span class="dv">2</span>, <span class="dv">2</span> <span class="sc">*</span> p_1 <span class="sc">*</span> q_1, q_1<span class="sc">^</span><span class="dv">2</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="population-b" class="level2">
+<h2 class="anchored" data-anchor-id="population-b">Population B</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>n_indvB <span class="ot">=</span> <span class="dv">30</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>n_loci <span class="ot">=</span> <span class="dv">10</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>geno <span class="ot">=</span> <span class="fu">matrix</span>(<span class="fu">sample</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">2</span>, n_indvB  <span class="sc">*</span> n_loci, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(<span class="fl">0.4</span>, <span class="fl">0.4</span>,<span class="fl">0.2</span>)), <span class="at">nrow =</span> n_indvB, <span class="at">ncol =</span> n_loci)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(geno) <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">"ind"</span>, <span class="dv">1</span><span class="sc">:</span>n_indvB)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(geno) <span class="ot">=</span> <span class="fu">paste0</span>(<span class="st">"locus"</span>, <span class="dv">1</span><span class="sc">:</span>n_loci)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>geno[<span class="dv">1</span><span class="sc">:</span><span class="dv">30</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      locus1 locus2 locus3 locus4 locus5 locus6 locus7 locus8 locus9 locus10
+ind1       1      2      0      1      0      2      2      0      0       2
+ind2       0      2      1      0      1      0      1      1      0       1
+ind3       0      0      1      1      1      1      0      1      1       1
+ind4       2      0      1      0      1      1      1      0      0       1
+ind5       2      1      2      1      1      1      0      1      1       0
+ind6       1      0      0      1      2      1      0      0      0       0
+ind7       0      0      2      0      1      0      1      1      1       2
+ind8       2      1      2      1      1      1      0      0      2       0
+ind9       0      1      0      0      1      0      2      2      2       1
+ind10      0      1      0      0      0      1      2      2      0       0
+ind11      2      1      0      0      0      0      1      1      1       0
+ind12      0      0      0      1      2      1      1      2      1       1
+ind13      0      0      0      0      0      0      2      0      0       1
+ind14      0      1      1      2      0      1      0      0      1       1
+ind15      1      1      0      0      0      1      2      1      0       1
+ind16      2      1      1      2      0      0      0      1      0       1
+ind17      1      1      1      2      2      0      0      0      1       1
+ind18      1      0      0      0      0      1      0      0      0       1
+ind19      1      1      1      0      2      0      1      0      0       1
+ind20      2      2      1      1      0      1      0      2      2       0
+ind21      2      1      1      2      1      0      1      0      2       1
+ind22      0      0      0      1      0      1      2      0      2       1
+ind23      0      0      0      1      1      2      0      0      0       1
+ind24      2      1      0      2      1      0      0      1      2       2
+ind25      0      0      1      0      2      0      0      1      0       0
+ind26      0      1      0      1      1      0      2      1      0       2
+ind27      0      1      2      0      1      1      1      1      1       2
+ind28      0      0      2      2      1      0      1      2      1       1
+ind29      1      2      2      0      1      2      1      1      1       1
+ind30      1      1      1      0      0      0      1      2      0       0</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(geno)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     locus1 locus2 locus3 locus4 locus5 locus6 locus7 locus8 locus9 locus10
+ind1      1      2      0      1      0      2      2      0      0       2
+ind2      0      2      1      0      1      0      1      1      0       1
+ind3      0      0      1      1      1      1      0      1      1       1
+ind4      2      0      1      0      1      1      1      0      0       1
+ind5      2      1      2      1      1      1      0      1      1       0
+ind6      1      0      0      1      2      1      0      0      0       0</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>alt_freq <span class="ot">=</span> <span class="fu">colMeans</span>(geno) <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>ref_freq <span class="ot">=</span> <span class="dv">1</span> <span class="sc">-</span> alt_freq</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">locus =</span> <span class="fu">names</span>(alt_freq), <span class="at">alt_freq =</span> <span class="fu">round</span>(alt_freq, <span class="dv">3</span>), <span class="at">ref_freq =</span> <span class="fu">round</span>(ref_freq, <span class="dv">3</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          locus alt_freq ref_freq
+locus1   locus1    0.400    0.600
+locus2   locus2    0.383    0.617
+locus3   locus3    0.383    0.617
+locus4   locus4    0.367    0.633
+locus5   locus5    0.400    0.600
+locus6   locus6    0.317    0.683
+locus7   locus7    0.417    0.583
+locus8   locus8    0.400    0.600
+locus9   locus9    0.367    0.633
+locus10 locus10    0.450    0.550</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>p_1 <span class="ot">=</span> <span class="fl">0.60</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>q_1 <span class="ot">=</span> <span class="dv">1</span> <span class="sc">-</span> p_1</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>Pop_2 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">population =</span> <span class="st">"Pop_2"</span>, <span class="at">genotype =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"AA"</span>, <span class="st">"Aa"</span>, <span class="st">"aa"</span>), <span class="at">size =</span> <span class="dv">30</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(p_1<span class="sc">^</span><span class="dv">2</span>, <span class="dv">2</span> <span class="sc">*</span> p_1 <span class="sc">*</span> q_1, q_1<span class="sc">^</span><span class="dv">2</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Genotype Frequencies</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Calculating geno freq's</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>geno_count_pop1 <span class="ot">=</span> <span class="fu">table</span>(Pop_1<span class="sc">$</span>genotype)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>geno_count_pop2 <span class="ot">=</span> <span class="fu">table</span>(Pop_2<span class="sc">$</span>genotype)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(geno_count_pop1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+aa Aa AA 
+ 2 14 14 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(geno_count_pop2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+aa Aa AA 
+ 9 11 10 </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Converting geno counts to frequencies</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>geno_prop_Pop1 <span class="ot">=</span> <span class="fu">prop.table</span>(<span class="fu">table</span>(Pop_1<span class="sc">$</span>genotype))</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>geno_prop_Pop2 <span class="ot">=</span> <span class="fu">prop.table</span>(<span class="fu">table</span>(Pop_2<span class="sc">$</span>genotype))</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(geno_prop_Pop1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+        aa         Aa         AA 
+0.06666667 0.46666667 0.46666667 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(geno_prop_Pop2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+       aa        Aa        AA 
+0.3000000 0.3666667 0.3333333 </code></pre>
+</div>
+</div>
+<p>(need to bind populations)</p>
+</section>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section">……..</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>Ho <span class="ot">=</span> <span class="fu">colMeans</span>(geno <span class="sc">==</span> <span class="dv">1</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>He <span class="ot">=</span> <span class="dv">2</span> <span class="sc">*</span> ref_freq <span class="sc">*</span> alt_freq</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>het_table <span class="ot">&lt;-</span> <span class="fu">data.frame</span> (<span class="at">locus =</span> <span class="fu">names</span> (Ho), <span class="at">Ho =</span> <span class="fu">round</span>(Ho, <span class="dv">3</span>), <span class="at">He =</span> <span class="fu">round</span> (He, <span class="dv">3</span>), <span class="at">diff =</span> <span class="fu">round</span>(Ho <span class="sc">-</span> He, <span class="dv">3</span>))</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>het_table</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          locus    Ho    He   diff
+locus1   locus1 0.267 0.480 -0.213
+locus2   locus2 0.500 0.473  0.027
+locus3   locus3 0.367 0.473 -0.106
+locus4   locus4 0.333 0.464 -0.131
+locus5   locus5 0.467 0.480 -0.013
+locus6   locus6 0.433 0.433  0.001
+locus7   locus7 0.367 0.486 -0.119
+locus8   locus8 0.400 0.480 -0.080
+locus9   locus9 0.333 0.464 -0.131
+locus10 locus10 0.567 0.495  0.072</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>pca_sim <span class="ot">&lt;-</span><span class="fu">prcomp</span>(geno, <span class="at">scale. =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pca_sim<span class="sc">$</span>x[, <span class="dv">1</span>], pca_sim<span class="sc">$</span>x[, <span class="dv">2</span>], <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">xlab =</span> <span class="st">"PC1"</span>, <span class="at">ylab =</span> <span class="st">"PC2"</span>, <span class="at">main =</span> <span class="st">"Simulated genotype PCA"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
